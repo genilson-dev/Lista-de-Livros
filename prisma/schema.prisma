@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id    String  @id @default(uuid()) // Identificador unico do usuario
+  email String  @unique // Email do usuario
+  name  String // Nome do usuario
+  books Book[] // Livros associados ao usuario
+  @@map("users") // Mapeia o modelo para a tabela "users"
+}
+
+model Book {
+  id        String  @id @default(uuid())
+  title     String
+  content   String? @db.Text // Conteudo do livro
+  published Boolean @default(false) // Indica se o livro foi publicado
+  createdAt DateTime @default(now()) // Data de criacao do livro
+  updatedAt DateTime @updatedAt // Data da ultima atualizacao do livro
+  author    User    @relation(fields: [authorId], references: [id]) // Relacao com o autor do livro
+  authorId  String // ID do autor do livro
+  autor     Autor?  @relation(fields: [autorId], references: [id]) // Relacao com o Autor
+  autorId   String? // ID do Autor
+  @@map("books") // Mapeia o modelo para a tabela "books"
+}
+
+model Autor {
+  id    String  @id @default(uuid()) // Identificador unico do autor
+  name  String // Nome do autor
+  bio   String? @db.Text // Biografia do autor
+  books Book[] // Livros escritos pelo autor.
+  @@map("autors") // Mapeia o modelo para a tabela "autors"
+}

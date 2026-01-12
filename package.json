@@ -1,14 +1,32 @@
 {
   "name": "backend",
-  "packageManager": "yarn@4.10.3",
+  "version": "1.0.0",
+  "description": "Este Projeto trata-se de uma lista de Livros criada inicialmente para testes",
+  "homepage": "https://github.com/genilson-dev/Lista-de-Livros#readme",
+  "bugs": {
+    "url": "https://github.com/genilson-dev/Lista-de-Livros/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/genilson-dev/Lista-de-Livros.git"
+  },
+  "license": "ISC",
+  "author": "Genilson Monteiro da silva",
+  "type": "commonjs",
+  "main": "server.js",
   "scripts": {
-    "dev": ""
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/node": "^25.0.6",
+    "prisma": "^7.2.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "@prisma/adapter-mariadb": "^7.2.0",
+    "@prisma/client": "^7.2.0",
+    "dotenv": "^17.2.3"
   }
 }

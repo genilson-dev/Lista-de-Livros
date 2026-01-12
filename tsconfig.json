@@ -1,0 +1,44 @@
+{
+  // Configuração do compilador TypeScript
+  "compilerOptions": {
+    /* Diretórios de entrada/saída */
+    "rootDir": "./src",          // Código-fonte
+    "outDir": "./dist",          // Saída compilada
+
+    /* Ambiente */
+    "target": "ESNext",          // Gera código moderno
+    "module": "NodeNext",        // Suporte a ESM em Node.js
+    "lib": ["ESNext", "DOM"],    // Inclui APIs modernas + navegador
+    "types": ["node"],           // Tipos do Node.js
+
+    /* Geração de artefatos */
+    "sourceMap": true,           // Mapas de código para debug
+    "declaration": true,         // Gera arquivos .d.ts
+    "declarationMap": true,      // Mapas para declarações
+
+    /* Checagens mais seguras */
+    "strict": true,              // Ativa todos os checks estritos
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Estilo e consistência */
+    "jsx": "react-jsx",          // Novo transform JSX (React 17+)
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,        // Ignora checagem de libs externas
+
+    /* Paths e resolução */
+    "esModuleInterop": true,     // Melhor compatibilidade com CommonJS
+    "resolveJsonModule": true,   // Permite importar JSON
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],            // Inclui apenas código-fonte
+  "exclude": ["node_modules", "dist"] // Evita compilar dependências
+}
