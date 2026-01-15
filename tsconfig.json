@@ -1,44 +1,34 @@
 {
-  // Configuração do compilador TypeScript
   "compilerOptions": {
-    /* Diretórios de entrada/saída */
-    "rootDir": "./src",          // Código-fonte
-    "outDir": "./dist",          // Saída compilada
+    /* Diretórios */
+    "rootDir": "src",
+    "outDir": "dist",
 
     /* Ambiente */
-    "target": "ESNext",          // Gera código moderno
-    "module": "NodeNext",        // Suporte a ESM em Node.js
-    "lib": ["ESNext", "DOM"],    // Inclui APIs modernas + navegador
-    "types": ["node"],           // Tipos do Node.js
+    "target": "esnext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "types": ["node"],
 
-    /* Geração de artefatos */
-    "sourceMap": true,           // Mapas de código para debug
-    "declaration": true,         // Gera arquivos .d.ts
-    "declarationMap": true,      // Mapas para declarações
+    /* Geração */
+    "sourceMap": true,
 
-    /* Checagens mais seguras */
-    "strict": true,              // Ativa todos os checks estritos
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
+    /* Segurança */
+    "strict": true,
     "noImplicitReturns": true,
-    "noImplicitOverride": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
 
-    /* Estilo e consistência */
-    "jsx": "react-jsx",          // Novo transform JSX (React 17+)
-    "verbatimModuleSyntax": true,
+    /* Módulos */
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true,        // Ignora checagem de libs externas
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
 
-    /* Paths e resolução */
-    "esModuleInterop": true,     // Melhor compatibilidade com CommonJS
-    "resolveJsonModule": true,   // Permite importar JSON
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true
+    /* Qualidade */
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
   },
-  "include": ["src"],            // Inclui apenas código-fonte
-  "exclude": ["node_modules", "dist"] // Evita compilar dependências
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -1,22 +1,21 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-generator client {
-  provider = "prisma-client-js"
-}
-
 
 datasource db {
   provider = "postgresql"
+  // url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
 }
 
 model User {
   id    String  @id @default(uuid()) // Identificador unico do usuario
   email String  @unique // Email do usuario
   name  String // Nome do usuario
+  password String // Senha do usuario
   books Book[] // Livros associados ao usuario
+  created_at DateTime @default(now()) // Data de criacao do usuario
+  updated_at DateTime @updatedAt // Data da ultima atualizacao do usuario
   @@map("users") // Mapeia o modelo para a tabela "users"
 }
 
@@ -39,5 +38,5 @@ model Autor {
   name  String // Nome do autor
   bio   String? @db.Text // Biografia do autor
   books Book[] // Livros escritos pelo autor.
-  @@map("autors") // Mapeia o modelo para a tabela "autors"
+  @@map("authors") // Mapeia o modelo para a tabela "autors"
 }
