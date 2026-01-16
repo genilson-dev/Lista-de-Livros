@@ -1,4 +1,5 @@
-import routerTest from "./testRoutes/teste.js"; 
 import userRoutes from "./userRoutes/user.routes.js";
+import bookRoutes from "./bookRoutes/book.routes.js";
+import authorRoutes from "./authorRoutes/author.routes.js";
 
-export { routerTest, userRoutes };
+export { userRoutes, bookRoutes, authorRoutes };

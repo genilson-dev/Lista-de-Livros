@@ -35,8 +35,36 @@ model Book {
 
 model Autor {
   id    String  @id @default(uuid()) // Identificador unico do autor
-  name  String // Nome do autor
+  name  String? // Nome do autor
   bio   String? @db.Text // Biografia do autor
   books Book[] // Livros escritos pelo autor.
   @@map("authors") // Mapeia o modelo para a tabela "autors"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+enum Status {
+  ACTIVE
+  INACTIVE
+}
+
+enum Author {
+  id
+  name
+  bio
+  created_at
+  updated_at
+  }
+
+enum Books {
+  id
+  title
+  content
+  published
+  createdAt
+  updatedAt
+  authorId
+  autorId
 }
