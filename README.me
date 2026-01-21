@@ -32,3 +32,29 @@ Examples
 
       Display Prisma debug info
       $ prisma debug
+
+
+CREATE TABLE IF NOT EXISTS cliente(
+	id_cliente INT PRIMARY KEY,
+    nome VARCHAR(50) not null,
+    cidade VARCHAR(50) NOT NULL,
+    sexo CHAR(1),
+    estado CHAR(2),
+    estadoCivil CHAR(2)
+);
+
+CREATE TABLE IF NOT EXISTS carro(
+	id_carro INT PRIMARY KEY,
+    marca VARCHAR(50) not null,
+    modelo VARCHAR(50) NOT NULL,
+    valor FLOAT
+);
+
+CREATE TABLE IF NOT EXISTS aluguel(
+    id_aluguel INT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    id_carro INT NOT NULL,
+    data_aluguel INT NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
+    FOREIGN KEY (id_carro) REFERENCES carro(id_carro)
+);

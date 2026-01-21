@@ -8,7 +8,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 // app.use(routerTest, userRoutes);
-app.use(userRoutes, bookRoutes, authorRoutes);
+app.use(
+    userRoutes, 
+    bookRoutes, 
+    authorRoutes
+);
 
 const PORT = process.env.PORT || 9999;
 app.listen(PORT, () => {
