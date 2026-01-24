@@ -3,17 +3,17 @@ import CreateBookService from "../../servers/book/CreateBookService.js";
 
 class CreateBookController {
     async handle(req: Request, res: Response) {
-        const { title, content, published, authorId } = req.body;
+        const { title, content, published, createdById, authorId } = req.body;
 
         const createBookService = new CreateBookService();
 
         try {
-            const newBook = await createBookService.execute({
-                
+            const newBook = await createBookService.execute({                
                 title,
                 content,
                 published,
                 authorId,
+                createdById: createdById
             });
 
             return res.status(201).json(newBook);

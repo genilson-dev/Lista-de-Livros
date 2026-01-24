@@ -7,7 +7,7 @@ class CreateAuthorService {
             if (!name) {
                 throw new Error("Name is required");
             }
-            const createNewBook = await bankPrisma.autor.create({
+            const createNewBook = await bankPrisma.author.create({
                 data: {                    
                     name,
                     bio

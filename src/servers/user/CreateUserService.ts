@@ -16,38 +16,39 @@ class CreateUserService {
         }
 
                 // Verifica se o email já existe no banco de dados
-        const emailAlreadyExists = await bankPrisma.user.findMany({
+        const emailAlreadyExists = await bankPrisma.user.findUnique({
             where: { email: email },
         });
 
         // Verifica se o email já existe no banco de dados
         if (emailAlreadyExists) {
             // throw new Error("Email already exists");
-            throw new Error("this email is incorrect");
+            throw new Error("Erro no email: Já existe um usuário cadastrado com este email.");
 
         }
         // criptografa a senha antes de salvar no banco de dados
         const passHash = await hash(password, 10)
-        const createNewUser = await bankPrisma.user.create({
-            data: {
-                name,
-                email,
-                password: passHash,
-            },
-            select:{
-                id: true,
-                name: true,
-                email: true,
-                created_at: true,
-                updated_at: true,
-            }
-        })
+        const user = await bankPrisma.user.create({
+  data: {
+    name,
+    email,
+    password: passHash,
+  },
+  select: {
+    id: true,
+    name: true,
+    email: true,
+    created_at: true,
+    updated_at: true,
+  },
+});
+
         // console.log(createNewUser);
         if (process.env.NODE_ENV === "development") {
-            console.log(createNewUser);
+            console.log(user);
         }
 
-        return createNewUser;
+        return user;
     }
 }
 
