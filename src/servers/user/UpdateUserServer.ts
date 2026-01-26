@@ -3,17 +3,17 @@ import { bankPrisma } from "../../prisma/index.js";
 import { UpdateUserRequest } from "../../interfaces/UpdateUserRequest.js";
 
 class UpdateUserService {
-    async execute({ userId, email, name, password }: UpdateUserRequest) {
-        if (!userId) {
+    async execute({ userId, email, name, password }: UpdateUserRequest) { // Corrigido para usar UpdateUserRequest
+        if (!userId) { // Verifica se o ID do usuário foi fornecido
             throw new Error("User ID is required");
         }
 
         // Monta dinamicamente os campos a atualizar
-        const data: Record<string, any> = {};
-        if (name) data.name = name;
-        if (email) data.email = email;
+        const data: Record<string, any> = {}; // Usando Record para permitir chaves dinâmicas 
+        if (name) data.name = name; // Adiciona o nome se fornecido
+        if (email) data.email = email; // Adiciona o email se fornecido
         if (password) {
-            const passHash = await hash(password, 8);
+            const passHash = await hash(password, 10);
             data.password = passHash;
         }
 

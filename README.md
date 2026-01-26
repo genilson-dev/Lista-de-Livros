@@ -58,3 +58,6 @@ CREATE TABLE IF NOT EXISTS aluguel(
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
     FOREIGN KEY (id_carro) REFERENCES carro(id_carro)
 );
+
+# Rotas insonmia
+

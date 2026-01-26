@@ -3,6 +3,7 @@
     /* Diretórios */
     "rootDir": "src",
     "outDir": "dist",
+     "typeRoots": ["./node_modules/@types", "./src/@types"],
 
     /* Ambiente */
     "target": "esnext",

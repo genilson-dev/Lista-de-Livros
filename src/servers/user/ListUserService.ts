@@ -8,11 +8,11 @@ class ListUserService {
                 email: true,
                 created_at: true,
                 updated_at: true,
-                // password: true
+                password: true
 
             }
         })
-        // console.log(users);
+        
         
         return users;
     }
