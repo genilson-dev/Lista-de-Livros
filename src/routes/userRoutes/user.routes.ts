@@ -6,6 +6,9 @@ import {LoginUserController} from "../../controllers/user/LoginUserController.js
 import { IsAuthenticated } from "../../middlewares/isAuthenticatedUser.js";
 import { ListUserByIdController } from "../../controllers/user/ListUserByIdController.js";
 import { ListUserByNameController } from "../../controllers/user/ListUserByNameController.js";
+import { DeleteUserController } from "../../controllers/user/DeleteUserController.js";
+
+
 const router = Router(); // Cria uma nova instância do roteador do Express
 
 router.post("/create/user",  new CreateUserController().handle); // Define a rota POST para criar usuário
@@ -14,6 +17,7 @@ router.get("/list/users",IsAuthenticated, new ListUserCController().handle); // 
 router.put("/user/:id",IsAuthenticated, new UpdateUserController().handle); // Define a rota PUT para atualizar usuário
 router.get("/list/:id",IsAuthenticated, new ListUserByIdController().handle); // Define a rota GET para listar usuário por ID
 router.get("/users/:name/:email", IsAuthenticated, new ListUserByNameController().handle); // Define a rota GET para listar usuário por nome
+router.delete("/user/:id", IsAuthenticated, new DeleteUserController().handle); // Define a rota DELETE para deletar usuário
 
 
 

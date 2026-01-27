@@ -18,6 +18,13 @@ class ListUserByIdService { // Define a classe ListUserService
                     updated_at: true, // data de atualização
                 },
             });
+            if (id.length === 0) {
+                throw new Error("User not found no db");
+            }
+            
+            if (!user){
+                throw new Error("User not found");
+            }
 
             return user; // Retorna o usuário encontrado ou null se não existir
         } catch (error: any) { // Captura erros durante a busca
