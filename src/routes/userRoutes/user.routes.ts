@@ -5,10 +5,14 @@ import UpdateUserController from "../../controllers/user/UpdateUserController.js
 import {LoginUserController} from "../../controllers/user/LoginUserController.js";
 import { IsAuthenticated } from "../../middlewares/isAuthenticatedUser.js";
 
-const router = Router();
+const router = Router(); // Cria uma nova instância do roteador do Express
 
-router.post("/create/user",  new CreateUserController().handle);
-router.post("/login/user", new LoginUserController().handle);
-router.get("/list/users",IsAuthenticated, new ListUserCController().handle);
-router.put("/user/:id",IsAuthenticated, new UpdateUserController().handle);
-export default router;
+router.post("/create/user",  new CreateUserController().handle); // Define a rota POST para criar usuário
+router.post("/login/user", new LoginUserController().handle); // Define a rota POST para login de usuário
+router.get("/list/users",IsAuthenticated, new ListUserCController().handle); // Define a rota GET para listar usuários
+router.put("/user/:id",IsAuthenticated, new UpdateUserController().handle); // Define a rota PUT para atualizar usuário
+
+
+
+
+export default router; // Exporta o roteador

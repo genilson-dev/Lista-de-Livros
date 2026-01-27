@@ -12,30 +12,30 @@ class UpdateUserService {
         const data: Record<string, any> = {}; // Usando Record para permitir chaves dinâmicas 
         if (name) data.name = name; // Adiciona o nome se fornecido
         if (email) data.email = email; // Adiciona o email se fornecido
-        if (password) {
-            const passHash = await hash(password, 10);
-            data.password = passHash;
+        if (password) { // Adiciona a senha se fornecida
+            const passHash = await hash(password, 10); // Hash da nova senha
+            data.password = passHash; // Define a senha hasheada no objeto de dados
         }
 
         try {
-            const updatedUser = await bankPrisma.user.update({
-                where: { id: userId },
-                data,
-                select: {
-                    id: true,
-                    name: true,
-                    email: true,
-                    created_at: true,
-                    updated_at: true,
+            const updatedUser = await bankPrisma.user.update({ // Atualiza o usuário no banco de dados
+                where: { id: userId },  // Usa userId para localizar o usuário
+                data, // Dados a serem atualizados
+                select: { // Seleciona os campos a serem retornados
+                    id: true, // ID do usuário
+                    name: true, // nome do usuário
+                    email: true, // email do usuário
+                    created_at: true, // data de criação
+                    updated_at: true, // data de atualização
                 },
             });
 
-            return updatedUser;
-        } catch (error: any) {
+            return updatedUser; // Retorna o usuário atualizado
+        } catch (error: any) { // Captura erros durante a atualização
             // Prisma lança erro se o usuário não existir
             throw new Error(`Erro ao atualizar usuário: ${error.message}`);
         }
     }
 }
 
-export { UpdateUserService };
+export { UpdateUserService }; // Exporta o serviço de atualização de usuário
