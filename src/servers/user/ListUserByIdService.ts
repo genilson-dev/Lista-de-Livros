@@ -18,12 +18,12 @@ class ListUserByIdService { // Define a classe ListUserService
                     updated_at: true, // data de atualização
                 },
             });
-            if (id.length === 0) {
-                throw new Error("User not found no db");
+            if (id.length === 0) { // Verifica se o ID está vazio
+                throw new Error("User not found no db"); // Lança um erro se o ID estiver vazio
             }
             
-            if (!user){
-                throw new Error("User not found");
+            if (!user){ // Verifica se o usuário foi encontrado
+                throw new Error("User not found"); // Lança um erro se o usuário não for encontrado
             }
 
             return user; // Retorna o usuário encontrado ou null se não existir

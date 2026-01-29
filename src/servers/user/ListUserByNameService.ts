@@ -1,33 +1,34 @@
 import { bankPrisma } from "../../prisma/index.js";
 import { SearchUserRequest } from "../../interfaces/SearchUserRequest.js";
 
-class ListUserByNameService {
-    async execute({ name, email }: SearchUserRequest) {
-        if (!name && !email) {
-            throw new Error("User name or email is required");
+class ListUserByNameService { // Serviço para listar usuários por nome ou email
+    async execute({ name, email }: SearchUserRequest) { // Recebe o nome ou email para busca
+        if (!name && !email) { // Verifica se pelo menos um dos campos foi fornecido
+            throw new Error("User name or email is required"); // Lança um erro se nenhum campo for fornecido
         }
-        try {
-            const users = await bankPrisma.user.findMany({
-                where: {
-                    name: {
-                        contains: name,
-                        mode: "insensitive",
+        try { // Tenta buscar os usuários no banco de dados
+            const users = await bankPrisma.user.findMany({ // Busca múltiplos usuários
+                where: { // Condição de busca
+                    name: { // Busca por nome
+                        contains: name, // Usa contains para busca parcial
+                        mode: "insensitive", // Busca sem diferenciar maiúsculas de minúsculas
                     },
-                    email:{
-                        contains: email,
-                        mode: "insensitive",
+                    email:{ // Busca por email
+                        contains: email, // Usa contains para busca parcial
+                        mode: "insensitive", // Busca sem diferenciar maiúsculas de minúsculas
                     }
                 },
-                select: {
-                    id: true,
+                select: { // Seleciona os campos a serem retornados
+                    id: true, 
                     name: true,
                     email: true,
                     created_at: true,
                     updated_at: true,
                 },
             });
-            return users;
-        } catch (error: any) {
+            return users; // Retorna a lista de usuários encontrados
+
+        } catch (error: any) { // Captura erros durante a busca
             throw new Error(`Error fetching users by name: ${error.message}`);
         }
     }

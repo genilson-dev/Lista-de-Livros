@@ -19,7 +19,7 @@ class CreateUserService { // Serviço para criar um novo usuário
     });
 
     if (emailAlreadyExists) { // Se o email já existir, lança um erro
-      throw new Error(`Email ${email} já cadastrado `);
+      throw new Error(`Email  já cadastrado `);
     }
 
     const passwordHash = await hash(password, 8); // Hash da senha para segurança 

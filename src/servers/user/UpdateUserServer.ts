@@ -13,7 +13,7 @@ class UpdateUserService {
         if (name) data.name = name; // Adiciona o nome se fornecido
         if (email) data.email = email; // Adiciona o email se fornecido
         if (password) { // Adiciona a senha se fornecida
-            const passHash = await hash(password, 10); // Hash da nova senha
+            const passHash = await hash(password, 8); // Hash da nova senha
             data.password = passHash; // Define a senha hasheada no objeto de dados
         }
 
@@ -33,7 +33,7 @@ class UpdateUserService {
             return updatedUser; // Retorna o usuário atualizado
         } catch (error: any) { // Captura erros durante a atualização
             // Prisma lança erro se o usuário não existir
-            throw new Error(`Erro ao atualizar usuário: ${error.message}`);
+            throw new Error(error.message);
         }
     }
 }

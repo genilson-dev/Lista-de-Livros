@@ -4,21 +4,21 @@ import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
 const { sign } = jwt;
 
-class LoginUserService {
-  async execute({ email, password }: AuthUserRequest) {
+class LoginUserService { // Serviço para autenticar o usuário
+  async execute({ email, password }: AuthUserRequest) { // Recebe email e senha
     // Busca o usuário pelo email
-    const user = await bankPrisma.user.findUnique({
-      where: { email },
+    const user = await bankPrisma.user.findUnique({ // Busca o usuário no banco de dados
+      where: { email }, // campo email
     });
     
     // Verifica se o usuário existe
-    if (!user) {
-      throw new Error("Email or password incorrect");
+    if (!user) { // Se o usuário não existir, lança um erro
+      throw new Error("Email or password incorrect"); 
     }
 
-    const passwordMatch = await compare(password, user.password);    
+    const passwordMatch = await compare(password, user.password); // Verifica se a senha está correta
      // Verifica se a senha está correta
-    if (!passwordMatch) {
+    if (!passwordMatch) { // Se a senha estiver incorreta, lança um erro
       throw new Error("Email or password incorrect");
     }
     // Verifica se a variável de ambiente JWT_SECRET está definida
