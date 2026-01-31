@@ -4,7 +4,7 @@ import { ListAuthorRequest } from "../../interfaces/ListAuthorRequest.js";
 class ListAuthorById{
     async execute({id}:ListAuthorRequest){
         if(!id){
-            throw new Error("Naofoi possivel listar os autores")
+            throw new Error("Nao foi possivel listar os autores")
         }
         const authorIdClean = id.trim();
         const authorExists = await bankPrisma.author.findUnique({
