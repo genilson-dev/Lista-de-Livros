@@ -1,5 +1,5 @@
 import { bankPrisma } from "../../prisma/index.js";
-import { SearchUserRequest } from "../../interfaces/SearchUserRequest.js";
+import { SearchUserRequest } from "../../interfaces/user/SearchUserRequest.js";
 
 class ListUserByNameService { // Serviço para listar usuários por nome ou email
     async execute({ name, email }: SearchUserRequest) { // Recebe o nome ou email para busca
@@ -13,13 +13,13 @@ class ListUserByNameService { // Serviço para listar usuários por nome ou emai
                         contains: name, // Usa contains para busca parcial
                         mode: "insensitive", // Busca sem diferenciar maiúsculas de minúsculas
                     },
-                    email:{ // Busca por email
+                    email: { // Busca por email
                         contains: email, // Usa contains para busca parcial
                         mode: "insensitive", // Busca sem diferenciar maiúsculas de minúsculas
                     }
                 },
                 select: { // Seleciona os campos a serem retornados
-                    id: true, 
+                    id: true,
                     name: true,
                     email: true,
                     created_at: true,

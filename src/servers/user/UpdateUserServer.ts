@@ -1,6 +1,6 @@
 import { hash } from "bcryptjs";
 import { bankPrisma } from "../../prisma/index.js";
-import { UpdateUserRequest } from "../../interfaces/UpdateUserRequest.js";
+import { UpdateUserRequest } from "../../interfaces/user/UpdateUserRequest.js";
 
 class UpdateUserService {
     async execute({ userId, email, name, password }: UpdateUserRequest) { // Corrigido para usar UpdateUserRequest

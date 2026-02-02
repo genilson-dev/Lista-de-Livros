@@ -1,6 +1,6 @@
 import { hash } from "bcryptjs";
 import { bankPrisma } from "../../prisma/index.js";
-import { CreateUserRequest } from "../../interfaces/CreateUserRequest.js";
+import { CreateUserRequest } from "../../interfaces/user/CreateUserRequest.js";
 import jwt from "jsonwebtoken";
 
 class CreateUserService { // Serviço para criar um novo usuário
@@ -11,7 +11,7 @@ class CreateUserService { // Serviço para criar um novo usuário
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expressão regular para validar o formato do email
     if (!emailRegex.test(email)) { // Verifica se o email está no formato correto
-      throw new Error("Invalid email format"); 
+      throw new Error("Invalid email format");
     }
 
     const emailAlreadyExists = await bankPrisma.user.findUnique({ // Verifica se o email já está cadastrado

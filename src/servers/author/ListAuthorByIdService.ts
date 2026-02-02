@@ -1,22 +1,22 @@
 import { bankPrisma } from "../../prisma/index.js";
-import { ListAuthorRequest } from "../../interfaces/ListAuthorRequest.js";
+import { ListAuthorRequest } from "../../interfaces/author/ListAuthorByIdRequest.js";
 
-class ListAuthorById{
-    async execute({id}:ListAuthorRequest){
-        if(!id){
+class ListAuthorById {
+    async execute({ id }: ListAuthorRequest) {
+        if (!id) {
             throw new Error("Nao foi possivel listar os autores")
         }
         const authorIdClean = id.trim();
         const authorExists = await bankPrisma.author.findUnique({
-            where:{
+            where: {
                 id: authorIdClean
             }
         });
-        if(!authorExists){
+        if (!authorExists) {
             throw new Error("Ninguem foi encontrado")
         }
         await bankPrisma.author.findMany({
-            where:{
+            where: {
                 id: id
             },
             select: {

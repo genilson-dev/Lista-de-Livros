@@ -1,5 +1,5 @@
 import { bankPrisma } from "../../prisma/index.js";
-import { UpdateAuthorRequest } from "../../interfaces/UpdateAuthorRequest.js";
+import { UpdateAuthorRequest } from "../../interfaces/author/UpdateAuthorRequest.js";
 
 class UpdateAuthorService {
     async execute({ id, authorId, name, bio }: UpdateAuthorRequest & { authorId: string }) {
@@ -19,7 +19,7 @@ class UpdateAuthorService {
             throw new Error("Autor nao encontrado");
         }
         const data: Partial<UpdateAuthorRequest> = {
-            name: name ? name.trim() : authorExists.name,
+            name: name ? name.trim() : authorExists.name, // 
             bio: bio ? bio.trim() : (authorExists.bio ?? ""),
         };
         if (name) data.name = name;
@@ -31,7 +31,7 @@ class UpdateAuthorService {
                 select: {
                     id: true,
                     name: true,
-                    bio: true,                    
+                    bio: true,
                     created_at: true,
                     updated_at: true,
                 }

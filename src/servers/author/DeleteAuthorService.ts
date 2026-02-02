@@ -1,5 +1,5 @@
 import { bankPrisma } from "../../prisma/index.js";
-import { DeleteAuthorRequest } from "../../interfaces/DeleteAuthorRequest.js";
+import { DeleteAuthorRequest } from "../../interfaces/author/DeleteAuthorRequest.js";
 
 class DeleteAuthorService {
   async execute({ id }: DeleteAuthorRequest) {

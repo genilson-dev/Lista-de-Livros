@@ -1,5 +1,5 @@
 import { bankPrisma } from "../../prisma/index.js";
-import { CreateBookRequest } from "../../interfaces/CreateBookRequest.js";
+import { CreateBookRequest } from "../../interfaces/book/CreateBookRequest.js";
 
 class CreateBookService {
   async execute({ title, content, published, createdById, authorId }: CreateBookRequest) { // Recebe os dados para criar um livro
@@ -13,7 +13,7 @@ class CreateBookService {
     }
 
     if (!authorId) { // Validação do ID do autor do livro
-      throw new Error(`O id do author é obrigatorio ${authorId}` );
+      throw new Error(`O id do author é obrigatorio ${authorId}`);
     }
 
     return bankPrisma.book.create({ // Cria um novo livro no banco de dados
@@ -25,7 +25,7 @@ class CreateBookService {
         authorId // ID do autor do livro
       },
       select: { // Seleciona os campos a serem retornados
-        id: true, 
+        id: true,
         title: true,
         published: true,
         created_at: true,

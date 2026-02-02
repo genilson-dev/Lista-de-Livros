@@ -1,5 +1,5 @@
 import { bankPrisma } from "../../prisma/index.js";
-import { DelereUserRequest } from "../../interfaces/DelereUserRequest.js";  
+import { DelereUserRequest } from "../../interfaces/user/DelereUserRequest.js";
 
 
 class DeleteUserServer { // Classe para deletar um usuário
@@ -17,7 +17,7 @@ class DeleteUserServer { // Classe para deletar um usuário
         });
 
         return { message: "User deleted successfully" }; // Retorna uma mensagem de sucesso
-    }   
+    }
 }
 export { DeleteUserServer }; // Exporta a classe DeleteUserServer
 

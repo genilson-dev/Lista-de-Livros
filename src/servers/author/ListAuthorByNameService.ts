@@ -1,5 +1,5 @@
 import { bankPrisma } from "../../prisma/index.js";
-import { ListRequestAuthor } from "../../interfaces/ListRequestAuthor.js";
+import { ListRequestAuthor } from "../../interfaces/author/ListAuthorByNameRequestAuthor.js";
 
 class ListAuthorByNameService {
     async execute({ name }: ListRequestAuthor) {

@@ -1,5 +1,5 @@
 import { bankPrisma } from "../../prisma/index.js";
-import AuthUserRequest from "../../interfaces/AuthUserRequest.js";
+import AuthUserRequest from "../../interfaces/middleware/AuthUserRequest.js";
 import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
 const { sign } = jwt;
