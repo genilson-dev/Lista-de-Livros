@@ -5,7 +5,7 @@ class UpdateAuthorService {
     async execute({ id, authorId, name, bio }: UpdateAuthorRequest & { authorId: string }) {
 
         if (!id && !authorId) {
-            throw new Error("O autor informado nao exxiste ou nao tem ninguem logado");
+            throw new Error("O autor informado nao existe ou nao tem ninguem logado");
         }
         const clearId = id.trim();
         // const clearIdAuthor = authorId.trim();
