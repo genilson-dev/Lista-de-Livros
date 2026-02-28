@@ -1,8 +1,8 @@
 import { bankPrisma } from "../../prisma/index.js";
-import { ListAuthorRequest } from "../../interfaces/author/ListAuthorByIdRequest.js";
+import { ListAuthorByIdRequest } from "../../interfaces/author/ListAuthorByIdRequest.js";
 
 class ListAuthorById {
-    async execute({ id }: ListAuthorRequest) {
+    async execute({ id }: ListAuthorByIdRequest) {
         if (!id) {
             throw new Error("Nao foi possivel listar os autores")
         }

@@ -1,7 +1,7 @@
 import { bankPrisma } from "../../prisma/index.js";
 import { ListBookByTitleRequest } from "../../interfaces/book/ListBookByTitleRequest.js";
 class ListBooksByTitleService {
-  async execute({title}: ListBookByTitleRequest) {
+  async execute({ title }: ListBookByTitleRequest) {
     const book = await bankPrisma.book.findFirst({
       where: {
         title: title
@@ -18,7 +18,7 @@ class ListBooksByTitleService {
             id: true, // 
             name: true // ajuste conforme seu model Author
           }
-        }       
+        }
       }
     });
 

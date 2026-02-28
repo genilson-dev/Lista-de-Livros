@@ -1,9 +1,9 @@
 import { bankPrisma } from "../../prisma/index.js";
 import { UpdateBookRequest } from "../../interfaces/book/UpdateBookRequest.js";
 
-class UpdateBookService{
-    async execute({id, title, content, published, authorId, createdById}:UpdateBookRequest){
-        if(!id){
+class UpdateBookService {
+    async execute({ id, title, content, published, authorId, createdById }: UpdateBookRequest) {
+        if (!id) {
             throw new Error("The title is required")
         }
         const clearId = id.trim()
@@ -12,7 +12,7 @@ class UpdateBookService{
                 id: clearId
             }
         })
-        if(!findBook){
+        if (!findBook) {
             throw new Error("Book Not found")
         }
 
@@ -21,7 +21,7 @@ class UpdateBookService{
             content,
             published,
             authorId,
-            createdById            
+            createdById
         }
 
         try {
@@ -32,7 +32,7 @@ class UpdateBookService{
                 data, // Os dados a serem atualizados, que são passados como um objeto contendo os campos a serem modificados
                 select: {
                     title: true,
-                    content:true,
+                    content: true,
                     published: true,
                     authorId: true,
                     createdById: true

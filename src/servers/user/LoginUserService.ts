@@ -10,14 +10,14 @@ class LoginUserService { // Serviço para autenticar o usuário
     const user = await bankPrisma.user.findUnique({ // Busca o usuário no banco de dados
       where: { email }, // campo email
     });
-    
+
     // Verifica se o usuário existe
     if (!user) { // Se o usuário não existir, lança um erro
-      throw new Error("Email or password incorrect"); 
+      throw new Error("Email or password incorrect");
     }
 
     const passwordMatch = await compare(password, user.password); // Verifica se a senha está correta
-     // Verifica se a senha está correta
+    // Verifica se a senha está correta
     if (!passwordMatch) { // Se a senha estiver incorreta, lança um erro
       throw new Error("Email or password incorrect");
     }
@@ -37,7 +37,7 @@ class LoginUserService { // Serviço para autenticar o usuário
         expiresIn: "10d", // expiration time 
       }
     );
-      // O que vai ser retornado para o usuário
+    // O que vai ser retornado para o usuário
     return {
       id: user.id, // user ID 
       name: user.name, // user name
@@ -47,4 +47,4 @@ class LoginUserService { // Serviço para autenticar o usuário
   }
 }
 
-export { LoginUserService} ; // exportando o serviço
+export { LoginUserService }; // exportando o serviço

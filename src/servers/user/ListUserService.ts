@@ -3,7 +3,7 @@ import { bankPrisma } from "../../prisma/index.js"; // Importa a instância do P
 class ListUserService { // Define a classe ListUserService
     async execute() { // Método assíncrono para listar usuários
         const users = await bankPrisma.user.findMany({ // Busca todos os usuários no banco de dados
-            select:{ // Seleciona os campos a serem retornados
+            select: { // Seleciona os campos a serem retornados
                 id: true,
                 name: true,
                 email: true,
@@ -13,8 +13,8 @@ class ListUserService { // Define a classe ListUserService
 
             }
         })
-        
-        
+
+
         return users; // Retorna a lista de usuários encontrados
     }
 }

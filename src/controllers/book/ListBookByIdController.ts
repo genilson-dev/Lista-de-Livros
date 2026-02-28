@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 // import ListAllBooksService from "../../servers/book/ListAllBookService.js";
 import ListBooksByIdService from "../../servers/book/ListBookByIdService.js";
 
-class ListBookByIdController{
-    async handle(req: Request, res: Response){ // Manipulador da requisição
+class ListBookByIdController {
+    async handle(req: Request, res: Response) { // Manipulador da requisição
         const { id } = req.params; // Extrai o ID do livro dos parâmetros da requisição
         console.log("ID recebido para listagem:", id); // Log para verificar o ID recebido
         const listook = new ListBooksByIdService(); // Instancia o serviço de listagem de livros por ID

@@ -3,4 +3,4 @@ interface AuthUserRequest {
     password: string;
 }
 
-export default AuthUserRequest ;
+export default AuthUserRequest;

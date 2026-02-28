@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import {CreateUserService} from "../../servers/user/CreateUserService.js";
+import { CreateUserService } from "../../servers/user/CreateUserService.js";
 
 class CreateUserController { // Controlador para criar usuário
     async handle(req: Request, res: Response) { // Manipulador da requisição

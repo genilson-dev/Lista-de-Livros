@@ -1,3 +1,3 @@
-export interface ListAuthorByIdRequest{
+export interface ListAuthorByIdRequest {
     id: string
 }

@@ -1,4 +1,4 @@
-export interface DeleteAuthorRequest{
+export interface DeleteAuthorRequest {
     id: string;
-}   
+}
 

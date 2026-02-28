@@ -11,7 +11,7 @@ import ListAuthorByNameController from '../../controllers/author/ListAuthorByNam
 const router = Router(); // Cria uma nova instância do roteador do Express
 
 router.post('/create/author', IsAuthenticated, new CreateAuthorController().handle); // Define a rota POST para criar autor
-router.get('/authors/list',IsAuthenticated, new ListAuthorController().handle); // Define a rota GET para listar autores
+router.get('/authors/list', IsAuthenticated, new ListAuthorController().handle); // Define a rota GET para listar autores
 router.put('/update/:id', IsAuthenticated, new UpdateAuthorController().handle); // Define a rota PUT para atualizar autor
 router.delete('/author/delete/:id', IsAuthenticated, new DeleteAuthorController().handle); // Define a rota DELETE para deletar autor
 router.get("/author/list/", IsAuthenticated, new ListAuthorByNameController().handle)

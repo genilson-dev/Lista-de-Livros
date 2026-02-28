@@ -13,7 +13,7 @@ class UpdateUserController { // Controlador para atualizar usuário
             email, // email do usuário
             password // senha do usuário
         });
-        
+
         return res.json(user); // Retorna o usuário atualizado em formato JSON
     }
 }

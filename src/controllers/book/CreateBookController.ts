@@ -5,7 +5,7 @@ class CreateBookController { // Controlador para criar livro
     async handle(req: Request, res: Response) { // Manipulador da requisição 
         const { title, content, published, createdById, authorId } = req.body; // Extrai dados do corpo da requisição
 
-         if (!title || !content || !authorId || !createdById) { // Validação simples dos dados do livro
+        if (!title || !content || !authorId || !createdById) { // Validação simples dos dados do livro
             return res.status(400).json({ error: "Title, content, authorId and createdById are required" }); // Retorna erro se faltar algum campo obrigatório
         }
 

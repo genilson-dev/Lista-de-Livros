@@ -4,7 +4,7 @@ dotenv.config(); // Carrega as variáveis de ambiente do arquivo .env para proce
 
 import cors from "cors"; // Importa o módulo cors para habilitar o Cross-Origin Resource Sharing (CORS) e permitir que o servidor aceite requisições de diferentes origens
 
-import { userRoutes, bookRoutes, authorRoutes } from "./routes/index.routes.js";
+import { userRoutes, bookRoutes, authorRoutes } from "./routes/index.routes.js"; // Importa as rotas de usuário, livro e autor a partir do arquivo index.routes.js, que centraliza todas as rotas da aplicação
 
 const app = express(); // Cria uma nova instância do aplicativo Express, que é o framework web utilizado para criar o servidor e definir as rotas da aplicação
 app.use(express.json()); // Habilita o middleware express.json() para que o servidor possa entender e processar requisições com payloads JSON, permitindo que os dados sejam enviados no corpo das requisições HTTP.

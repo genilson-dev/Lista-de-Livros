@@ -1,8 +1,8 @@
 import { bankPrisma } from "../../prisma/index.js";
-import { ListRequestAuthor } from "../../interfaces/author/ListAuthorByNameRequestAuthor.js";
+import type { ListAuthorByNameRequestAuthor } from "../../interfaces/author/ListAuthorByNameRequestAuthor.js";
 
 class ListAuthorByNameService {
-    async execute({ name }: ListRequestAuthor) {
+    async execute({ name }: ListAuthorByNameRequestAuthor) {
         if (!name) {
             throw new Error("O nome informado nao existe no banco de dados")
         }

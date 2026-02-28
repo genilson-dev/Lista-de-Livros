@@ -1,9 +1,9 @@
 import { bankPrisma } from "../../prisma/index.js";
 import { DeleteBookRequest } from "../../interfaces/book/DeleteBookRequest.js";
 
-class DeleteBookService{
-    async execute({id}: DeleteBookRequest){
-        if(!id){
+class DeleteBookService {
+    async execute({ id }: DeleteBookRequest) {
+        if (!id) {
             throw new Error("O Livro informado não foi encontrado")
         }
         const clearId = id.trim();
@@ -13,7 +13,7 @@ class DeleteBookService{
             }
         })
         console.log("ID recebido para exclusão:", clearId) // Log para verificar o ID recebido
-        if(!findBook){
+        if (!findBook) {
             throw new Error("Livro não encontrado")
         }
         try {
@@ -24,7 +24,7 @@ class DeleteBookService{
             })
             return deleteBook
         } catch (error) {
-            console.error("Erro ao deletar o livro:", error); 
+            console.error("Erro ao deletar o livro:", error);
             throw new Error("Erro ao deletar o livro");
         }
     }
